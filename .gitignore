@@ -1,0 +1,30 @@
+# Python virtual environment
+venv/
+
+# Python cache and compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment files
+.env
+
+# Editor and IDE files
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
+
+# Machine learning model artifacts
+models/*.pkl
+models/*.joblib
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+tmp/
+temp/

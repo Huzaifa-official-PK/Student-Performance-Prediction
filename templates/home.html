@@ -1,0 +1,617 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home | Student Performance Prediction
+{% endblock %}
+
+{% block content %}
+
+<!-- ================= HERO SECTION ================= -->
+
+<section class="hero-section">
+
+    <div class="row align-items-center min-vh-100">
+
+        <div class="col-lg-6">
+
+            <span class="badge bg-primary px-3 py-2 mb-3">
+
+                AI Powered Student Analytics
+
+            </span>
+
+            <h1 class="display-4 fw-bold">
+
+                Student Performance
+
+                <span class="text-gradient">
+
+                    Prediction System
+
+                </span>
+
+            </h1>
+
+            <p class="lead mt-4">
+
+                Predict student exam scores using Machine Learning.
+
+                This intelligent system analyzes study habits,
+
+                attendance, motivation, family background,
+
+                and academic history to estimate final performance.
+
+            </p>
+
+            <div class="mt-4">
+
+                <a href="{{ url_for('prediction') }}"
+                   class="btn btn-primary btn-lg me-3">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                    Predict Now
+
+                </a>
+
+                <a href="{{ url_for('about') }}"
+                   class="btn btn-outline-light btn-lg">
+
+                    Learn More
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-6 d-flex justify-content-center">
+            <div class="position-relative rounded-4 overflow-hidden" style="width:100%;max-width:560px;min-height:440px;background: radial-gradient(circle at top left, rgba(6,182,212,0.24), transparent 36%), radial-gradient(circle at bottom right, rgba(59,130,246,0.22), transparent 34%), rgba(10,18,34,0.92);box-shadow: 0 40px 90px rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(18px);">
+                <div class="position-absolute w-100 h-100" style="top:0;left:0;background:radial-gradient(circle at 20% 20%, rgba(56,189,248,0.24), transparent 22%), radial-gradient(circle at 80% 25%, rgba(59,130,246,0.18), transparent 16%), radial-gradient(circle at 50% 80%, rgba(14,165,233,0.14), transparent 14%);pointer-events:none;"></div>
+
+                <div class="position-absolute" style="top:18px;left:18px;width:120px;height:120px;border-radius:30px;background:rgba(255,255,255,0.08);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,0.12);box-shadow:0 20px 40px rgba(6,182,212,0.15);">
+                    <div class="h-100 d-flex align-items-center justify-content-center">
+                        <div style="width:72px;height:72px;border-radius:50%;background:rgba(6,182,212,0.18);display:grid;place-items:center;box-shadow:0 0 30px rgba(6,182,212,0.35);">
+                            <i class="fa-solid fa-brain fa-2x text-white"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="position-absolute" style="top:32px;right:22px;width:110px;padding:14px;border-radius:22px;background:rgba(15,23,42,0.82);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,0.1);">
+                    <div class="text-white fw-semibold" style="font-size:0.9rem;letter-spacing:0.02em;">AI Pulse</div>
+                    <div class="text-white display-6 fw-bold">98%</div>
+                    <div class="text-muted" style="font-size:0.78rem;">Realtime accuracy</div>
+                </div>
+
+                <div class="position-absolute" style="bottom:26px;left:24px;width:128px;padding:14px;border-radius:22px;background:rgba(15,23,42,0.8);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,0.08);">
+                    <div class="text-white fw-semibold" style="font-size:0.85rem;letter-spacing:0.02em;">Insights</div>
+                    <div class="d-flex align-items-center gap-2 mt-2">
+                        <span class="badge bg-white text-dark px-2 py-1 rounded-pill" style="font-size:0.75rem;">+23%</span>
+                        <span class="text-muted" style="font-size:0.78rem;">Engagement</span>
+                    </div>
+                </div>
+
+                <div class="position-absolute" style="bottom:28px;right:28px;width:128px;padding:14px;border-radius:22px;background:rgba(15,23,42,0.8);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,0.08);">
+                    <div class="text-white fw-semibold" style="font-size:0.85rem;letter-spacing:0.02em;">Forecast</div>
+                    <div class="d-flex align-items-center gap-2 mt-2">
+                        <span class="badge bg-white text-dark px-2 py-1 rounded-pill" style="font-size:0.75rem;">A+</span>
+                        <span class="text-muted" style="font-size:0.78rem;">Trend</span>
+                    </div>
+                </div>
+
+                <div class="position-absolute" style="top:45%;left:48%;width:48px;height:48px;border-radius:50%;background:rgba(6,182,212,0.18);filter:blur(12px);transform:translate(-50%,-50%);"></div>
+                <div class="position-absolute" style="top:25%;left:60%;width:34px;height:34px;border-radius:50%;background:rgba(59,130,246,0.2);filter:blur(12px);"></div>
+                <div class="position-absolute" style="top:68%;left:40%;width:26px;height:26px;border-radius:50%;background:rgba(6,182,212,0.2);filter:blur(12px);"></div>
+                <div class="position-absolute" style="top:20%;left:20%;width:16px;height:16px;border-radius:50%;background:rgba(255,255,255,0.18);"></div>
+                <div class="position-absolute" style="top:12%;right:25%;width:18px;height:18px;border-radius:50%;background:rgba(255,255,255,0.14);"></div>
+                <div class="position-absolute" style="bottom:18%;left:55%;width:14px;height:14px;border-radius:50%;background:rgba(255,255,255,0.16);"></div>
+
+                <div class="position-absolute" style="top:170px;left:32px;width:82px;height:82px;border-radius:50%;background:rgba(6,182,212,0.15);border:1px solid rgba(56,189,248,0.35);box-shadow:0 0 32px rgba(6,182,212,0.2);">
+                    <div class="d-flex flex-column justify-content-center align-items-center h-100 text-white" style="font-size:0.76rem;letter-spacing:0.02em;">
+                        <div class="mb-2 fw-semibold">Circle</div>
+                        <div class="rounded-circle" style="width:42px;height:42px;background:linear-gradient(135deg,rgba(56,189,248,0.9),rgba(59,130,246,0.9));box-shadow:0 0 28px rgba(56,189,248,0.35);"></div>
+                    </div>
+                </div>
+
+                <div class="position-absolute" style="top:140px;right:22px;width:170px;padding:16px;border-radius:26px;background:rgba(15,23,42,0.82);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.1);">
+                    <div class="text-white fw-semibold mb-3" style="font-size:0.85rem;letter-spacing:0.02em;">Revenue Flow</div>
+                    <div class="d-flex align-items-end justify-content-between" style="gap:8px;height:72px;">
+                        <div style="width:20%;height:42%;background:linear-gradient(180deg,rgba(6,182,212,0.95),rgba(56,189,248,0.65));border-radius:999px;"></div>
+                        <div style="width:20%;height:60%;background:linear-gradient(180deg,rgba(59,130,246,0.95),rgba(56,189,248,0.72));border-radius:999px;"></div>
+                        <div style="width:20%;height:30%;background:linear-gradient(180deg,rgba(6,182,212,0.96),rgba(14,165,233,0.72));border-radius:999px;"></div>
+                        <div style="width:20%;height:52%;background:linear-gradient(180deg,rgba(59,130,246,0.95),rgba(37,99,235,0.72));border-radius:999px;"></div>
+                    </div>
+                </div>
+
+                <div class="position-absolute" style="top:155px;left:142px;width:180px;padding:16px;border-radius:26px;background:rgba(15,23,42,0.82);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.1);">
+                    <div class="text-white fw-semibold mb-3" style="font-size:0.85rem;letter-spacing:0.02em;">Trends</div>
+                    <div style="position:relative;height:72px;">
+                        <div style="position:absolute;bottom:0;left:0;width:100%;height:6px;background:rgba(255,255,255,0.08);border-radius:999px;"></div>
+                        <div style="position:absolute;bottom:6px;left:8px;width:80%;height:2px;background:linear-gradient(90deg,rgba(56,189,248,0.95),rgba(59,130,246,0.95));"></div>
+                        <div style="position:absolute;bottom:6px;left:0;width:30%;height:2px;background:linear-gradient(90deg,rgba(14,165,233,0.95),rgba(6,182,212,0.95));transform:translateY(-14px);"></div>
+                        <div style="position:absolute;bottom:6px;left:40%;width:40%;height:2px;background:linear-gradient(90deg,rgba(59,130,246,0.95),rgba(56,189,248,0.95));transform:translateY(-28px);"></div>
+                        <div style="position:absolute;bottom:6px;left:72%;width:18%;height:2px;background:linear-gradient(90deg,rgba(14,165,233,0.95),rgba(6,182,212,0.95));transform:translateY(-12px);"></div>
+                    </div>
+                </div>
+
+                <div class="position-absolute" style="top:160px;left:64px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px);">
+                    <div class="position-absolute" style="top:12px;left:12px;width:96px;height:96px;border-radius:50%;background:rgba(6,182,212,0.12);border:1px solid rgba(56,189,248,0.2);"></div>
+                </div>
+
+                <div class="position-absolute" style="bottom:98px;left:195px;width:32px;height:32px;border-radius:50%;background:rgba(56,189,248,0.22);"></div>
+                <div class="position-absolute" style="bottom:58px;left:225px;width:24px;height:24px;border-radius:50%;background:rgba(59,130,246,0.22);"></div>
+                <div class="position-absolute" style="top:86px;left:260px;width:18px;height:18px;border-radius:50%;background:rgba(255,255,255,0.14);"></div>
+
+                <div class="position-absolute" style="top:96px;left:112px;width:2px;height:90px;background:linear-gradient(180deg,rgba(56,189,248,0.85),transparent);transform:rotate(18deg);"></div>
+                <div class="position-absolute" style="top:188px;left:198px;width:2px;height:88px;background:linear-gradient(180deg,rgba(59,130,246,0.85),transparent);transform:rotate(-22deg);"></div>
+                <div class="position-absolute" style="top:248px;left:128px;width:2px;height:92px;background:linear-gradient(180deg,rgba(14,165,233,0.85),transparent);transform:rotate(8deg);"></div>
+
+                <div class="position-absolute" style="top:108px;left:240px;width:140px;height:140px;border-radius:50%;background:rgba(15,23,42,0.82);border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(16px);">
+                    <div class="position-absolute" style="top:10px;left:10px;width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,rgba(6,182,212,0.2),rgba(59,130,246,0.16));"></div>
+                    <div class="position-absolute top-50 start-50 translate-middle text-white text-center" style="width:100%;font-size:0.85rem;letter-spacing:0.02em;">
+                        <div class="fw-semibold mb-2">AI Metrics</div>
+                        <div class="d-flex justify-content-center gap-2">
+                            <span style="width:18px;height:18px;border-radius:50%;background:rgba(56,189,248,0.95);box-shadow:0 0 18px rgba(56,189,248,0.45);"></span>
+                            <span style="width:18px;height:18px;border-radius:50%;background:rgba(59,130,246,0.95);box-shadow:0 0 18px rgba(59,130,246,0.45);"></span>
+                            <span style="width:18px;height:18px;border-radius:50%;background:rgba(14,165,233,0.95);box-shadow:0 0 18px rgba(14,165,233,0.45);"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="position-absolute bottom-0 start-50 translate-middle-x" style="width:calc(100% - 48px);height:180px;background:rgba(15,23,42,0.75);border-top-left-radius:32px;border-top-right-radius:32px;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px);padding:22px;">
+                    <div class="d-flex justify-content-between align-items-end" style="gap:16px;height:100%;">
+                        <div style="flex:1;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:22px;padding:14px;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;">
+                            <div class="text-white fw-semibold" style="font-size:0.82rem;letter-spacing:0.02em;">Forecast Score</div>
+                            <div class="d-flex gap-2 align-items-end" style="height:80px;">
+                                <div style="width:16px;height:32px;background:linear-gradient(180deg,rgba(6,182,212,0.95),rgba(59,130,246,0.75));border-radius:999px;"></div>
+                                <div style="width:16px;height:54px;background:linear-gradient(180deg,rgba(59,130,246,0.95),rgba(56,189,248,0.72));border-radius:999px;"></div>
+                                <div style="width:16px;height:24px;background:linear-gradient(180deg,rgba(6,182,212,0.95),rgba(56,189,248,0.75));border-radius:999px;"></div>
+                                <div style="width:16px;height:68px;background:linear-gradient(180deg,rgba(56,189,248,0.95),rgba(14,165,233,0.75));border-radius:999px;"></div>
+                            </div>
+                        </div>
+                        <div style="width:132px;height:132px;border-radius:50%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);display:grid;place-items:center;position:relative;">
+                            <div style="width:92px;height:92px;border-radius:50%;background:conic-gradient(from 0deg,rgba(6,182,212,0.95) 0%,rgba(59,130,246,0.92) 45%,rgba(14,165,233,0.84) 75%,rgba(6,182,212,0.12) 100%);"></div>
+                            <div class="position-absolute top-50 start-50 translate-middle text-white text-center" style="font-size:0.8rem;letter-spacing:0.02em;">82%</div>
+                        </div>
+                        <div style="flex:1;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:22px;padding:14px;display:flex;flex-direction:column;justify-content:space-between;">
+                            <div class="text-white fw-semibold" style="font-size:0.82rem;letter-spacing:0.02em;">Performance</div>
+                            <div class="d-flex align-items-center justify-content-between gap-2" style="font-size:0.78rem;">
+                                <span class="text-white">Line</span>
+                                <span class="text-muted">Stable</span>
+                            </div>
+                            <div style="position:relative;width:100%;height:36px;margin-top:10px;background:rgba(255,255,255,0.05);border-radius:999px;">
+                                <div style="position:absolute;left:0;bottom:0;width:76%;height:100%;background:linear-gradient(90deg,rgba(56,189,248,0.95),rgba(59,130,246,0.95));border-radius:999px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= DATASET SUMMARY ================= -->
+
+<section class="dataset-summary">
+
+    <div class="container">
+
+        <div class="row mb-4">
+
+            <div class="col-12 text-center">
+
+                <h2 class="fw-bold mb-2">Dataset Summary</h2>
+
+                <p class="text-muted mb-0">Premium overview of the student performance dataset powering the prediction engine.</p>
+
+            </div>
+
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="dataset-card">
+
+                    <div class="card-body">
+
+                        <i class="dataset-icon fa-solid fa-database"></i>
+
+                        <h5 class="dataset-title">Dataset</h5>
+
+                        <p class="dataset-value">Student Performance Factors</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="dataset-card">
+
+                    <div class="card-body">
+
+                        <i class="dataset-icon fa-solid fa-users"></i>
+
+                        <h5 class="dataset-title">Records</h5>
+
+                        <p class="dataset-value">6607</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="dataset-card">
+
+                    <div class="card-body">
+
+                        <i class="dataset-icon fa-solid fa-list"></i>
+
+                        <h5 class="dataset-title">Features</h5>
+
+                        <p class="dataset-value">19 Input Features</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="dataset-card">
+
+                    <div class="card-body">
+
+                        <i class="dataset-icon fa-solid fa-bullseye"></i>
+
+                        <h5 class="dataset-title">Target Variable</h5>
+
+                        <p class="dataset-value">Exam Score</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= FEATURES ================= -->
+
+<section class="py-5">
+
+    <div class="text-center mb-5">
+
+        <h2 class="fw-bold">
+
+            Why Choose This System?
+
+        </h2>
+
+        <p class="text-muted">
+
+            A professional machine learning application built with Flask.
+
+        </p>
+
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+
+            <div class="feature-card">
+
+                <i class="fa-solid fa-robot feature-icon"></i>
+
+                <h4>
+
+                    Machine Learning
+
+                </h4>
+
+                <p>
+
+                    Predicts student performance using trained regression models.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="feature-card">
+
+                <i class="fa-solid fa-chart-line feature-icon"></i>
+
+                <h4>
+
+                    Smart Prediction
+
+                </h4>
+
+                <p>
+
+                    Generates fast and reliable exam score predictions.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="feature-card">
+
+                <i class="fa-solid fa-gauge-high feature-icon"></i>
+
+                <h4>
+
+                    Professional Dashboard
+
+                </h4>
+
+                <p>
+
+                    Clean interface with interactive visualization and analytics.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= MACHINE LEARNING WORKFLOW ================= -->
+
+<section class="py-5">
+
+    <div class="text-center mb-5">
+
+        <h2 class="fw-bold">
+
+            Machine Learning Workflow
+
+        </h2>
+
+        <p class="text-muted">
+
+            Complete pipeline used to train and deploy the prediction model.
+
+        </p>
+
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-lg-3">
+
+            <div class="workflow-card">
+
+                <div class="workflow-number">1</div>
+
+                <i class="fa-solid fa-database workflow-icon"></i>
+
+                <h5>Dataset</h5>
+
+                <p>
+
+                    Kaggle Student Performance Factors dataset containing
+                    academic, family and lifestyle information.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3">
+
+            <div class="workflow-card">
+
+                <div class="workflow-number">2</div>
+
+                <i class="fa-solid fa-filter workflow-icon"></i>
+
+                <h5>Preprocessing</h5>
+
+                <p>
+
+                    Missing values, categorical encoding,
+                    scaling and feature transformation
+                    using Scikit-Learn Pipeline.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3">
+
+            <div class="workflow-card">
+
+                <div class="workflow-number">3</div>
+
+                <i class="fa-solid fa-brain workflow-icon"></i>
+
+                <h5>Model Training</h5>
+
+                <p>
+
+                    Multiple regression algorithms were trained,
+                    evaluated and compared to select the best model.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3">
+
+            <div class="workflow-card">
+
+                <div class="workflow-number">4</div>
+
+                <i class="fa-solid fa-chart-line workflow-icon"></i>
+
+                <h5>Prediction</h5>
+
+                <p>
+
+                    The trained model predicts the student's
+                    expected exam score from user input.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= DATASET INFORMATION ================= -->
+<!-- 
+<section class="py-5">
+
+    <div class="row">
+
+        <div class="col-lg-6">
+
+            <div class="info-card">
+
+                <h3>
+
+                    <i class="fa-solid fa-table me-2"></i>
+
+                    Dataset Summary
+
+                </h3>
+
+                <table class="table table-borderless mt-4">
+
+                    <tr>
+                        <th>Total Records</th>
+                        <td>6607</td>
+                    </tr>
+
+                    <tr>
+                        <th>Total Features</th>
+                        <td>19</td>
+                    </tr>
+
+                    <tr>
+                        <th>Target</th>
+                        <td>Exam Score</td>
+                    </tr>
+
+                    <tr>
+                        <th>Dataset Source</th>
+                        <td>Kaggle</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-6">
+
+            <div class="info-card">
+
+                <h3>
+
+                    <i class="fa-solid fa-microchip me-2"></i>
+
+                    Technologies
+
+                </h3>
+
+                <ul class="list-group list-group-flush mt-4">
+
+                    <li class="list-group-item">
+                        Python
+                    </li>
+
+                    <li class="list-group-item">
+                        Flask Framework
+                    </li>
+
+                    <li class="list-group-item">
+                        Scikit-Learn
+                    </li>
+
+                    <li class="list-group-item">
+                        XGBoost
+                    </li>
+
+                    <li class="list-group-item">
+                        Bootstrap 5
+                    </li>
+
+                    <li class="list-group-item">
+                        HTML • CSS • JavaScript
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<! ================= CALL TO ACTION ================= -->
+
+<section class="cta-section text-center">
+
+    <h2 class="fw-bold">
+
+        Ready to Predict Student Performance?
+
+    </h2>
+
+    <p class="lead mt-3">
+
+        Enter student information and receive an instant
+        machine learning prediction.
+
+    </p>
+
+    <a href="{{ url_for('prediction') }}"
+       class="btn btn-lg btn-primary mt-3">
+
+        <i class="fa-solid fa-play"></i>
+
+        Start Prediction
+
+    </a>
+
+</section>
+
+{% endblock %} -->

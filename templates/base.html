@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}Student Performance Prediction{% endblock %}
+    </title>
+
+    <!-- Bootstrap -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Google Font -->
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}">
+
+    {% block extra_css %}{% endblock %}
+
+</head>
+
+<body>
+
+<!-- ========================= NAVBAR ========================= -->
+
+<nav class="navbar navbar-expand-lg navbar-dark shadow-lg fixed-top">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold" href="{{ url_for('home') }}">
+
+            <i class="fa-solid fa-graduation-cap me-2"></i>
+
+            Student Predictor
+
+        </a>
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div
+            class="collapse navbar-collapse"
+            id="navbarNav">
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+
+                    <a class="nav-link {% if page=='home' %}active{% endif %}"
+
+                       href="{{ url_for('home') }}">
+
+                        <i class="fa-solid fa-house me-1"></i>
+
+                        Home
+
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a class="nav-link {% if page=='prediction' %}active{% endif %}"
+
+                       href="{{ url_for('prediction') }}">
+
+                        <i class="fa-solid fa-chart-line me-1"></i>
+
+                        Prediction
+
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a class="nav-link {% if page=='about' %}active{% endif %}"
+
+                       href="{{ url_for('about') }}">
+
+                        <i class="fa-solid fa-circle-info me-1"></i>
+
+                        About Model
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+<!-- ========================= MAIN CONTENT ========================= -->
+
+<main class="main-content">
+
+    <div class="container">
+
+        {% block content %}
+
+        {% endblock %}
+
+    </div>
+
+</main>
+<!-- ========================= FOOTER ========================= -->
+
+<footer class="footer mt-5">
+
+    <div class="container">
+
+        <div class="row gy-4">
+
+            <div class="col-lg-4">
+
+                <h4 class="footer-title">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    Student Performance Prediction
+                </h4>
+
+                <p class="footer-text">
+                    Professional Machine Learning project developed using
+                    Flask, Scikit-Learn and XGBoost for predicting
+                    student exam performance with an interactive dashboard.
+                </p>
+
+            </div>
+
+            <div class="col-lg-4">
+
+                <h5>Quick Links</h5>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="{{ url_for('home') }}">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ url_for('prediction') }}">
+                            Prediction
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ url_for('about') }}">
+                            About Model
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div class="col-lg-4">
+
+                <h5>Technologies</h5>
+
+                <div class="tech-badges">
+
+                    <span class="badge bg-primary m-1">Flask</span>
+
+                    <span class="badge bg-success m-1">Python</span>
+
+                    <span class="badge bg-warning text-dark m-1">Scikit-Learn</span>
+
+                    <span class="badge bg-danger m-1">XGBoost</span>
+
+                    <span class="badge bg-info text-dark m-1">Bootstrap 5</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div class="text-center">
+
+            <p class="mb-0">
+
+                © 2026 Student Performance Prediction System
+
+                <br>
+
+                Developed using Flask • Machine Learning • Bootstrap
+
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+<!-- ========================= SCROLL TO TOP ========================= -->
+
+<button id="scrollTopBtn" class="scroll-top">
+
+    <i class="fa-solid fa-arrow-up"></i>
+
+</button>
+
+<!-- ========================= LOADING ========================= -->
+
+<div id="loading">
+
+    <div class="spinner-border text-primary">
+
+        <span class="visually-hidden">
+
+            Loading...
+
+        </span>
+
+    </div>
+
+</div>
+
+<!-- Bootstrap JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Main JS -->
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+{% block extra_js %}
+
+{% endblock %}
+
+</body>
+
+</html>
